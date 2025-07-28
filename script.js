@@ -35,7 +35,7 @@ function addItem() {
   if (!name || isNaN(price) || price <= 0) return;
 
   const li = document.createElement('li');
-  li.textContent = `${name} - $${price.toFixed(2)}`;
+  li.textContent = `{name} - ${price.toFixed(2)}`;
   itemList.appendChild(li);
 
   remaining -= price;
@@ -51,7 +51,7 @@ function exportData() {
     items.push(li.textContent);
   });
 
-  const blob = new Blob([`Budget: $${budget.toFixed(2)}\nRemaining: $${remaining.toFixed(2)}\n\nItems:\n${items.join('\n')}`], {
+  const blob = new Blob([`Budget: ${budget.toFixed(2)}\nRemaining: ${remaining.toFixed(2)}\n\nItems:\n${items.join('\n')}`], {
     type: 'text/plain',
   });
 
