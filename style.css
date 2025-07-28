@@ -148,7 +148,17 @@ li {
 .prompt button:hover {
   background: #218838;
 }
-
+.currency-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.currency-group select {
+  padding: 5px;
+  font-size: 1rem;
+}
 /* Responsive */
 @media (min-width: 600px) {
   .container {
