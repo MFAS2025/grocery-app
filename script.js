@@ -68,20 +68,21 @@ function saveCurrency() {
 }
 
 function updateCurrencyUI() {
-  // Update currency symbols in budget and remaining display
+  // Update budget and remaining symbols
   document.getElementById('currencySymbol').textContent = currency;
   document.getElementById('currencySymbolRemaining').textContent = currency;
 
-  // Update currency symbols in existing item list
+  // Update item list currency symbols
   itemList.querySelectorAll('li').forEach((li) => {
     const parts = li.textContent.split(' - ');
     if (parts.length === 2) {
-      const [name, priceText] = parts;
-      const priceValue = priceText.replace(/[^0-9.]/g, ''); // Remove old currency symbol
-      li.textContent = `${name} - ${currency}${parseFloat(priceValue).toFixed(2)}`;
+      const name = parts[0];
+      const price = parts[1].replace(/[^0-9.]/g, ''); // Remove previous currency symbol
+      li.textContent = `${name} - ${currency}${parseFloat(price).toFixed(2)}`;
     }
   });
 }
+
 
 function clearAll() {
   itemList.innerHTML = '';
