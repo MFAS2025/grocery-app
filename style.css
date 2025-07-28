@@ -7,6 +7,10 @@ body {
   background-color: #f4f7fa;
   margin: 0;
   padding: 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
+  overscroll-behavior: none;
 }
 
 .container {
@@ -116,7 +120,36 @@ li {
   background: #e68900;
 }
 
-/* Responsive for larger screens */
+/* Budget Prompt Style */
+.prompt {
+  margin-bottom: 15px;
+}
+
+.prompt input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 70%;
+  max-width: 300px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.prompt button {
+  padding: 10px;
+  font-size: 1rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.prompt button:hover {
+  background: #218838;
+}
+
+/* Responsive */
 @media (min-width: 600px) {
   .container {
     max-width: 700px;
