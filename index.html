@@ -24,6 +24,18 @@
         <option value="₱">₱</option>
       </select>
     </div>
+
+    <div class="currency-group">
+      <label for="currencySelect">Currency:</label>
+      <select id="currencySelect">
+        <option value="$">$</option>
+        <option value="₱">₱</option>
+        <option value="€">€</option>
+        <option value="¥">¥</option>
+      </select>
+      <button onclick="saveCurrency()">Save Currency</button>
+    </div>
+
     <!-- Budget Input Prompt -->
     <div id="budgetPrompt" class="prompt" style="display: none;">
       <input type="number" id="budgetInput" placeholder="Enter your total budget" />
