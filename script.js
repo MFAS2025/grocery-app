@@ -61,6 +61,27 @@ function exportData() {
   a.download = 'grocery-budget.txt';
   a.click();
 }
+function saveCurrency() {
+  const selected = document.getElementById('currencySelect').value;
+  currency = selected;
+  updateCurrencyUI();
+}
+
+function updateCurrencyUI() {
+  // Update currency symbols in budget and remaining display
+  document.getElementById('currencySymbol').textContent = currency;
+  document.getElementById('currencySymbolRemaining').textContent = currency;
+
+  // Update currency symbols in existing item list
+  itemList.querySelectorAll('li').forEach((li) => {
+    const parts = li.textContent.split(' - ');
+    if (parts.length === 2) {
+      const [name, priceText] = parts;
+      const priceValue = priceText.replace(/[^0-9.]/g, ''); // Remove old currency symbol
+      li.textContent = `${name} - ${currency}${parseFloat(priceValue).toFixed(2)}`;
+    }
+  });
+}
 
 function clearAll() {
   itemList.innerHTML = '';
