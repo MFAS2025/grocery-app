@@ -1,5 +1,6 @@
 let budget = 0;
 let remaining = 0;
+let currency = "$";
 
 const budgetEl = document.getElementById('budget');
 const remainingEl = document.getElementById('remaining');
@@ -35,7 +36,7 @@ function addItem() {
   if (!name || isNaN(price) || price <= 0) return;
 
   const li = document.createElement('li');
-  li.textContent = `{name} - ${price.toFixed(2)}`;
+  li.textContent = `${name} - ${currency}${price.toFixed(2)}`;
   itemList.appendChild(li);
 
   remaining -= price;
