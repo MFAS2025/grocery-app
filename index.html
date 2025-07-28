@@ -7,12 +7,22 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Grocery Budget" />
+  <link rel="apple-touch-icon" href="favicon.png" />
   <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
     <img src="favicon.png" alt="Grocery Logo" class="logo" />
     
+    <!-- Budget Input Prompt -->
+    <div id="budgetPrompt" class="prompt" style="display: none;">
+      <input type="number" id="budgetInput" placeholder="Enter your total budget" />
+      <button onclick="setBudgetFromInput()">Set Budget</button>
+    </div>
+
     <h2>
       Budget: <span id="budget">0.00</span>
       <button onclick="editBudget()" class="edit-button">Edit</button>
@@ -20,7 +30,7 @@
 
     <div class="input-group">
       <input id="itemName" type="text" placeholder="Item" />
-      <input id="itemPrice" type="number" placeholder="₱" />
+      <input id="itemPrice" type="number" placeholder="$" />
       <button onclick="addItem()">Add</button>
     </div>
 
