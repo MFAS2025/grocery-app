@@ -71,6 +71,7 @@ function updateCurrencyUI() {
   // Update budget and remaining symbols
   document.getElementById('currencySymbol').textContent = currency;
   document.getElementById('currencySymbolRemaining').textContent = currency;
+  document.getElementById('itemPrice').placeholder = currency;
 
   // Update item list currency symbols
   itemList.querySelectorAll('li').forEach((li) => {
