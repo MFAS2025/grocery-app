@@ -83,14 +83,14 @@ function updateCurrencyUI() {
     }
   });
 }
-// DARK MODE TOGGLE FUNCTION
 function toggleDarkMode() {
   const isDark = document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
   updateDarkModeButton(isDark);
+  updateLogo(isDark);
 }
 
-// Update button text based on mode
+// Update toggle button text
 function updateDarkModeButton(isDark) {
   const toggleButton = document.getElementById('darkModeToggle');
   if (toggleButton) {
@@ -98,7 +98,21 @@ function updateDarkModeButton(isDark) {
   }
 }
 
-// ON PAGE LOAD
+// Update logo and favicon
+function updateLogo(isDark) {
+  const logoImg = document.querySelector('.logo');
+  const faviconLink = document.querySelector('link[rel="icon"]');
+
+  if (logoImg) {
+    logoImg.src = isDark ? 'faviconb.png' : 'favicon.png';
+  }
+
+  if (faviconLink) {
+    faviconLink.href = isDark ? 'faviconb.png' : 'favicon.png';
+  }
+}
+
+// On page load
 document.addEventListener('DOMContentLoaded', () => {
   const savedMode = localStorage.getItem('darkMode');
   const isDark = savedMode === 'enabled';
@@ -108,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   updateDarkModeButton(isDark);
+  updateLogo(isDark);
 
   const toggleButton = document.getElementById('darkModeToggle');
   if (toggleButton) {
