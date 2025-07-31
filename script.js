@@ -83,32 +83,30 @@ function updateCurrencyUI() {
     }
   });
 }
-######
+// Toggle dark mode when button is clicked
 function toggleDarkMode() {
   const isDark = document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+
   const toggleButton = document.getElementById('darkModeToggle');
   if (toggleButton) {
     toggleButton.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
   }
 }
 
-// Ensure the button exists and apply saved dark mode on full page load
-window.addEventListener('load', () => {
-  const darkModeSetting = localStorage.getItem('darkMode');
-  const toggleButton = document.getElementById('darkModeToggle');
+// Run this immediately after script loads
+const toggleButton = document.getElementById('darkModeToggle');
+if (toggleButton) {
+  toggleButton.addEventListener('click', toggleDarkMode);
+}
 
-  if (darkModeSetting === 'enabled') {
-    document.body.classList.add('dark-mode');
-    if (toggleButton) toggleButton.textContent = '☀️ Light Mode';
-  }
+// Apply saved theme
+if (localStorage.getItem('darkMode') === 'enabled') {
+  document.body.classList.add('dark-mode');
+  if (toggleButton) toggleButton.textContent = '☀️ Light Mode';
+}
 
-  if (toggleButton) {
-    toggleButton.addEventListener('click', toggleDarkMode);
-  }
-});
 
-###
 function clearAll() {
   itemList.innerHTML = '';
   remaining = budget;
