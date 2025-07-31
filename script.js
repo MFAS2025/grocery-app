@@ -87,17 +87,27 @@ function updateCurrencyUI() {
 function toggleDarkMode() {
   const isDark = document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-  document.getElementById('darkModeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+  const toggleButton = document.getElementById('darkModeToggle');
+  if (toggleButton) {
+    toggleButton.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+  }
 }
 
-// On load, check and apply dark mode setting
-window.addEventListener('DOMContentLoaded', () => {
+// Ensure the button exists and apply saved dark mode on full page load
+window.addEventListener('load', () => {
   const darkModeSetting = localStorage.getItem('darkMode');
+  const toggleButton = document.getElementById('darkModeToggle');
+
   if (darkModeSetting === 'enabled') {
     document.body.classList.add('dark-mode');
-    document.getElementById('darkModeToggle').textContent = '☀️ Light Mode';
+    if (toggleButton) toggleButton.textContent = '☀️ Light Mode';
+  }
+
+  if (toggleButton) {
+    toggleButton.addEventListener('click', toggleDarkMode);
   }
 });
+
 ###
 function clearAll() {
   itemList.innerHTML = '';
