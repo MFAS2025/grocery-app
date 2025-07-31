@@ -83,28 +83,38 @@ function updateCurrencyUI() {
     }
   });
 }
-// Toggle dark mode when button is clicked
+// DARK MODE TOGGLE FUNCTION
 function toggleDarkMode() {
   const isDark = document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+  updateDarkModeButton(isDark);
+}
 
+// Update button text based on mode
+function updateDarkModeButton(isDark) {
   const toggleButton = document.getElementById('darkModeToggle');
   if (toggleButton) {
     toggleButton.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
   }
 }
 
-// Run this immediately after script loads
-const toggleButton = document.getElementById('darkModeToggle');
-if (toggleButton) {
-  toggleButton.addEventListener('click', toggleDarkMode);
-}
+// ON PAGE LOAD
+document.addEventListener('DOMContentLoaded', () => {
+  const savedMode = localStorage.getItem('darkMode');
+  const isDark = savedMode === 'enabled';
 
-// Apply saved theme
-if (localStorage.getItem('darkMode') === 'enabled') {
-  document.body.classList.add('dark-mode');
-  if (toggleButton) toggleButton.textContent = '☀️ Light Mode';
-}
+  if (isDark) {
+    document.body.classList.add('dark-mode');
+  }
+
+  updateDarkModeButton(isDark);
+
+  const toggleButton = document.getElementById('darkModeToggle');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', toggleDarkMode);
+  }
+});
+
 
 
 function clearAll() {
