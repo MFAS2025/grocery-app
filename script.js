@@ -83,8 +83,22 @@ function updateCurrencyUI() {
     }
   });
 }
+######
+function toggleDarkMode() {
+  const isDark = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+  document.getElementById('darkModeToggle').textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
 
-
+// On load, check and apply dark mode setting
+window.addEventListener('DOMContentLoaded', () => {
+  const darkModeSetting = localStorage.getItem('darkMode');
+  if (darkModeSetting === 'enabled') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('darkModeToggle').textContent = '☀️ Light Mode';
+  }
+});
+###
 function clearAll() {
   itemList.innerHTML = '';
   remaining = budget;
@@ -96,3 +110,6 @@ window.onload = () => {
     budgetPrompt.style.display = 'block';
   }
 };
+
+
+
